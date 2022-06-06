@@ -11,6 +11,7 @@ class Peces {
     private JLabel norte, sur, este, oeste, noreste, noroeste, sureste, suroeste, pos_xy, esinfo;
 
     void printBtn() {
+
         ventana = new JFrame("Juegos de Pesca - DS3 UTP");
         ventana.setBounds(100, 100, 1000, 1000);
         ventana.setLayout(null);
@@ -36,13 +37,17 @@ class Peces {
             ventana.add(pos_xy);
         }
 
+        btnReiniciar = new JButton(String.valueOf("Reiniciar"));
+        btnReiniciar.setBounds(250, 740, 150, 50);
+        ventana.add(btnReiniciar);
+
         esinfo = new JLabel("Numero de intentos: ");
         esinfo.setSize(120, 50);
-        esinfo.setLocation(30, 750);
+        esinfo.setLocation(30, 755);
         ventana.add(esinfo);
 
-        txtIntentos = new JTextField();
-        txtIntentos.setBounds(180, 20, 30, 20);
+        txtIntentos = new JTextField("");
+        txtIntentos.setBounds(180, 770, 30, 20);
         ventana.add(txtIntentos);
 
         esinfo = new JLabel("Posicion del Cardumen: ");
@@ -50,8 +55,8 @@ class Peces {
         esinfo.setLocation(30, 730);
         ventana.add(esinfo);
 
-        txtCardumen = new JTextField();
-        txtCardumen.setBounds(180, 25, 30, 20);
+        txtCardumen = new JTextField("");
+        txtCardumen.setBounds(180, 745, 30, 20);
         ventana.add(txtCardumen);
 
         norte = new JLabel("Norte");
@@ -105,6 +110,14 @@ class Peces {
         ventana.add(esinfo);
 
         ventana.setVisible(true);
+
+    }
+
+    void ff() {
+        esinfo = new JLabel("hoasdas");
+        esinfo.setSize(100, 50);
+        esinfo.setLocation(750, 120);
+        ventana.add(esinfo);
 
     }
 }
