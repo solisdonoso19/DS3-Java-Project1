@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.event.*;
+import java.util.*;
 
-class Peces {
+class Peces implements ActionListener {
 
     private JFrame ventana;
 
@@ -9,6 +11,8 @@ class Peces {
     private JButton btnBoton, btnReiniciar;
 
     private JLabel norte, sur, este, oeste, noreste, noroeste, sureste, suroeste, pos_xy, esinfo;
+
+    private  Random cardumenInit;
 
     void printBtn() {
 
@@ -37,17 +41,18 @@ class Peces {
             ventana.add(pos_xy);
         }
 
-        btnReiniciar = new JButton(String.valueOf("Reiniciar"));
+        btnReiniciar = new JButton(String.valueOf("Iniciar"));
         btnReiniciar.setBounds(250, 740, 150, 50);
         ventana.add(btnReiniciar);
+        btnReiniciar.addActionListener(this);
 
         esinfo = new JLabel("Numero de intentos: ");
         esinfo.setSize(120, 50);
         esinfo.setLocation(30, 755);
         ventana.add(esinfo);
 
-        txtIntentos = new JTextField("");
-        txtIntentos.setBounds(180, 770, 30, 20);
+        txtIntentos = new JTextField("0");
+        txtIntentos.setBounds(180, 770, 70, 20);
         ventana.add(txtIntentos);
 
         esinfo = new JLabel("Posicion del Cardumen: ");
@@ -56,7 +61,7 @@ class Peces {
         ventana.add(esinfo);
 
         txtCardumen = new JTextField("");
-        txtCardumen.setBounds(180, 745, 30, 20);
+        txtCardumen.setBounds(180, 745, 70, 20);
         ventana.add(txtCardumen);
 
         norte = new JLabel("Norte");
@@ -109,15 +114,18 @@ class Peces {
         esinfo.setLocation(750, 100);
         ventana.add(esinfo);
 
+        cardumenInit = new Random();
+
         ventana.setVisible(true);
 
     }
 
-    void ff() {
-        esinfo = new JLabel("hoasdas");
-        esinfo.setSize(100, 50);
-        esinfo.setLocation(750, 120);
-        ventana.add(esinfo);
+    public void actionPerformed(ActionEvent e) {
+       if(e.getSource() == btnReiniciar){
+        btnReiniciar.setText(String.valueOf("Reiniciar"));
+        txtCardumen.setText(String.valueOf(cardumenInit.nextInt(10) + " " + cardumenInit.nextInt(10)));
+        txtIntentos.setText(String.valueOf(Integer.parseInt(txtIntentos.getText())+1));
+       }
 
     }
 }
