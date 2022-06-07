@@ -6,7 +6,7 @@ class Peces implements ActionListener {
 
     private JFrame ventana;
 
-    private JTextField txtIntentos, txtCardumen;
+    private JTextField txtIntentos, txtCardumen, prueba;
 
     private JButton btnBoton, btnReiniciar;
 
@@ -25,6 +25,7 @@ class Peces implements ActionListener {
             btnBoton = new JButton(String.valueOf(i));
             btnBoton.setBounds(115 + 55 * (i % 10), 115 + 55 * (i / 10), 50, 50);
             ventana.add(btnBoton);
+            btnBoton.addActionListener(this);
         }
 
         for (int i = 1; i < 11; i++) {
@@ -47,7 +48,7 @@ class Peces implements ActionListener {
         btnReiniciar.addActionListener(this);
 
         esinfo = new JLabel("Numero de intentos: ");
-        esinfo.setSize(120, 50);
+        esinfo.setSize(150, 50);
         esinfo.setLocation(30, 755);
         ventana.add(esinfo);
 
@@ -114,6 +115,10 @@ class Peces implements ActionListener {
         esinfo.setLocation(750, 100);
         ventana.add(esinfo);
 
+        prueba = new JTextField();
+        prueba.setBounds(180, 790, 70, 20);
+        ventana.add(prueba);
+
         cardumenInit = new Random();
 
         ventana.setVisible(true);
@@ -124,8 +129,17 @@ class Peces implements ActionListener {
        if(e.getSource() == btnReiniciar){
         btnReiniciar.setText(String.valueOf("Reiniciar"));
         txtCardumen.setText(String.valueOf(cardumenInit.nextInt(10) + " " + cardumenInit.nextInt(10)));
+        txtIntentos.setText(String.valueOf("0"));
+    }
+    if(e.getSource() == btnBoton){
+        String n;
+        n = btnBoton.getText();
+        char[] num = n.toCharArray();
+        for(int i = 0; i < num.length; i++) {
+            System.out.println(num[i]);
+        }
+        prueba.setText(String.valueOf(n));
         txtIntentos.setText(String.valueOf(Integer.parseInt(txtIntentos.getText())+1));
        }
-
     }
 }
