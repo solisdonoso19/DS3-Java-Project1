@@ -8,7 +8,7 @@ class Peces implements ActionListener {
 
     private JTextField txtIntentos, txtCardumen, prueba;
 
-    private JButton btnBoton, btnReiniciar;
+    private JButton btnBoton, btnReiniciar, btnTemporal;
 
     private JLabel norte, sur, este, oeste, noreste, noroeste, sureste, suroeste, pos_xy, esinfo;
 
@@ -131,14 +131,17 @@ class Peces implements ActionListener {
         txtCardumen.setText(String.valueOf(cardumenInit.nextInt(10) + " " + cardumenInit.nextInt(10)));
         txtIntentos.setText(String.valueOf("0"));
     }
+
+    btnTemporal = (JButton)e.getSource();
+    String n = btnTemporal.getText();
+    prueba.setText(String.valueOf(n));
+
     if(e.getSource() == btnBoton){
-        String n;
-        n = btnBoton.getText();
+        
         char[] num = n.toCharArray();
         for(int i = 0; i < num.length; i++) {
             System.out.println(num[i]);
         }
-        prueba.setText(String.valueOf(n));
         txtIntentos.setText(String.valueOf(Integer.parseInt(txtIntentos.getText())+1));
        }
     }
